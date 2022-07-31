@@ -1,0 +1,79 @@
+body {
+  background-image: url(img/matrix-bg.jpg);
+  font-family: 'Stardos Stencil', cursive;
+}
+
+h1 {
+  color: #f1f1f1;
+  font-size: 100px;
+}
+
+.box1 {
+  grid-area: myArea;
+}
+
+.box2 {
+  display: flex;
+  justify-content: right;
+  margin-right: 20px;
+}
+
+.box3 {
+  display: flex;
+  gap: 20px;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-areas: 'myArea myArea';
+  gap: 10px;
+  padding: 10px;
+}
+
+.grid-container > div {
+  background-color: rgba(255, 255, 255, 0.023);
+  color: #f1f1f1;
+  text-align: center;
+  padding: 40px 0;
+  font-size: 30px;
+}
+
+#myBtn,
+#deleteBtn {
+  padding: 10px 20px;
+  border: groove green 10px;
+  border-radius: 20px;
+  background-color: black;
+  color: #f1f1f1;
+  font-size: 25px;
+  font-weight: bold;
+}
+
+#myBtn:hover,
+#deleteBtn:hover {
+  background-color: green;
+}
+
+#myBtn:active,
+#deleteBtn:active {
+  background-color: #3e8e41;
+  box-shadow: 0 5px #0e390f;
+  transform: translateY(4px);
+}
+
+#inputField {
+  padding: 30px 60px;
+  border: groove green 10px;
+  border-radius: 20px;
+  background-color: black;
+  color: #f1f1f1;
+  font-size: 20px;
+}
+
+#tallrekke {
+  word-break: break-all;
+}
+
+#alleTall {
+  word-break: break-all;
+}
