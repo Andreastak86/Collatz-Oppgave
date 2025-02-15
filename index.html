@@ -11,7 +11,6 @@
             rel="stylesheet"
         />
         <link rel="stylesheet" type="text/css" href="styles.css" />
-
         <title>Collatz Conjecture</title>
     </head>
     <body>
@@ -24,22 +23,30 @@
                     type="number"
                     id="inputField"
                     placeholder="Pick a number!"
+                    aria-label="Enter a number for Collatz calculation"
                 />
             </div>
             <div class="box3">
-                <button id="myBtn">Test tallet</button>
-                <button id="deleteBtn">Reset</button>
+                <button
+                    id="myBtn"
+                    aria-label="Test number for Collatz Conjecture"
+                >
+                    Test tallet
+                </button>
+                <button id="deleteBtn" aria-label="Reset input and results">
+                    Reset
+                </button>
             </div>
             <div class="box5">
-                <h3 id="the-number">Du testet:</h3>
+                <h3>Du testet:</h3>
                 <p id="test"></p>
             </div>
             <div class="box4">
-                <h3 id="the-result">Hvor mange steg til 4-2-1:</h3>
+                <h3>Hvor mange steg til 4-2-1:</h3>
                 <p id="tallrekke"></p>
             </div>
             <div class="box6">
-                <h3 id="allNumber">Tall-rekke:</h3>
+                <h3>Tall-rekke:</h3>
                 <p id="alleTall"></p>
             </div>
         </div>

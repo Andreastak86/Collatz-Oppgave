@@ -1,85 +1,53 @@
-console.log('The Collatz Conjecture');
+console.log("The Collatz Conjecture");
 
-//Variabler som henter elemeter fra HTML//
-const testTallet = document.querySelector('#myBtn');
-const inputTall = document.querySelector('#inputField');
-const slettTallet = document.querySelector('#deleteBtn');
+// Variabler for å hente HTML-elementer
+const testTallet = document.querySelector("#myBtn");
+const inputTall = document.querySelector("#inputField");
+const slettTallet = document.querySelector("#deleteBtn");
 
-//Aktiv knapp som tar tallet fra inputfelt//
-testTallet.addEventListener('click', handleInput);
+// Hendelseslyttere
+testTallet.addEventListener("click", handleInput);
+slettTallet.addEventListener("click", clearInput);
 
-//Funksjon for å skrive til html//
+// Funksjon for å håndtere input
 function handleInput() {
-  let valgtTall = parseInt(inputTall.value);
-  const tallArray = collatzFormodning(valgtTall);
-  logTall(tallArray, valgtTall);
+    const valgtTall = parseInt(inputTall.value);
+
+    // Feilhåndtering for ugyldig input
+    if (isNaN(valgtTall) || valgtTall <= 0) {
+        alert("Vennligst skriv inn et gyldig tall.");
+        return;
+    }
+
+    const tallArray = collatzFormodning(valgtTall);
+    logTall(tallArray, valgtTall);
 }
 
-//Her er sjøvaste funksjonen som regner ut Collatz Conjecture//
+// Funksjon som regner ut Collatz-formodningen
 function collatzFormodning(valgtTall) {
-  let tallArray = [];
-  while (valgtTall !== 1) {
-    if (valgtTall % 2 == 0) {
-      valgtTall = valgtTall / 2;
-    } else {
-      valgtTall = valgtTall * 3 + 1;
+    let tallArray = [valgtTall];
+    while (valgtTall !== 1) {
+        if (valgtTall % 2 === 0) {
+            valgtTall = valgtTall / 2;
+        } else {
+            valgtTall = valgtTall * 3 + 1;
+        }
+        tallArray.push(valgtTall);
     }
-    console.log(valgtTall);
-    tallArray.push(valgtTall);
-  }
-  console.dir(tallArray);
-  return tallArray;
+    return tallArray;
 }
 
-//Her er funksjonen som logger ut tall fra konsoll til innerHTML//
+// Funksjon for å logge tallene til HTML
 function logTall(tallSomLogges, gammeltTall) {
-  document.getElementById('test').innerHTML = gammeltTall;
-  document.getElementById('tallrekke').innerHTML = tallSomLogges.length;
-  document.getElementById('alleTall').innerHTML = tallSomLogges;
+    document.getElementById("test").textContent = gammeltTall;
+    document.getElementById("tallrekke").textContent = tallSomLogges.length;
+    document.getElementById("alleTall").textContent = tallSomLogges.join(", ");
 }
 
-//Funskjon for å resette og tilbakestille inputfelt//
-function clear() {
-  document.getElementById('tallrekke').innerHTML = '';
-  document.getElementById('test').innerHTML = '';
-  document.getElementById('inputField').innerHTML = '';
+// Funksjon for å tømme inputfelt og resultater
+function clearInput() {
+    document.getElementById("tallrekke").textContent = "";
+    document.getElementById("test").textContent = "";
+    document.getElementById("alleTall").textContent = "";
+    inputTall.value = "";
 }
-slettTallet.addEventListener('click', clear);
-
-const btn = document.getElementById('deleteBtn');
-
-btn.addEventListener('click', function handleClick(event) {
-  event.preventDefault();
-  const testFelt = document.getElementById('inputField');
-  console.log(testFelt.value);
-  testFelt.value = '';
-});
-
-//Test for å finne ut om tallet er partall eller oddetall//
-/*Dette var en liten funskjon jeg lagde for å skjekke om tallet
-  var oddetall eller partall*/
-/*
-
-
-
-const oddeEllerPar = document.querySelector('#oddEven');
-const testOddEven = document.querySelector('#oddBtn');
-testOddEven.addEventListener('click', oddInput);
-
-function oddInput() {
-  let n = oddInput;
-  let result = n % 2;
-  function oddOrEven() {
-    if (result === 0) {
-      console.log('This number is even');
-    } else if (result !== 0) {
-      console.log('This number is odd');
-      return n;
-    }
-  }
-  oddOrEven();
-}
-function logoddEvenTall() {
-  document.getElementById('oddResult').innerHTML = n;
-}
-*/

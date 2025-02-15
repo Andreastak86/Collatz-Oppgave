@@ -1,79 +1,124 @@
 body {
-  background-image: url(img/matrix-bg.jpg);
-  font-family: 'Stardos Stencil', cursive;
+    background-image: url(img/matrix-bg.jpg);
+    font-family: "Stardos Stencil", cursive;
+    margin: 0;
+    padding: 0;
 }
 
 h1 {
-  color: #f1f1f1;
-  font-size: 100px;
-}
-
-.box1 {
-  grid-area: myArea;
-}
-
-.box2 {
-  display: flex;
-  justify-content: right;
-  margin-right: 20px;
-}
-
-.box3 {
-  display: flex;
-  gap: 20px;
+    color: #f1f1f1;
+    font-size: 100px;
+    text-align: center;
+    margin: 0;
 }
 
 .grid-container {
-  display: grid;
-  grid-template-areas: 'myArea myArea';
-  gap: 10px;
-  padding: 10px;
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* To kolonner */
+    grid-template-areas:
+        "myArea myArea"
+        "box2 box3"
+        "box4 box5"
+        "box6 box6";
+    gap: 10px;
+    padding: 10px;
 }
 
 .grid-container > div {
-  background-color: rgba(255, 255, 255, 0.023);
-  color: #f1f1f1;
-  text-align: center;
-  padding: 40px 0;
-  font-size: 30px;
+    background-color: rgba(255, 255, 255, 0.023);
+    color: #f1f1f1;
+    text-align: center;
+    padding: 40px 20px;
+    font-size: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+}
+
+.box1 {
+    grid-area: myArea;
+}
+
+.box2,
+.box3,
+.box4,
+.box5,
+.box6 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+#inputField {
+    padding: 15px 30px;
+    border: groove green 10px;
+    border-radius: 20px;
+    background-color: black;
+    color: #f1f1f1;
+    font-size: 20px;
+    width: 80%;
+    max-width: 400px;
 }
 
 #myBtn,
 #deleteBtn {
-  padding: 10px 20px;
-  border: groove green 10px;
-  border-radius: 20px;
-  background-color: black;
-  color: #f1f1f1;
-  font-size: 25px;
-  font-weight: bold;
+    padding: 10px 20px;
+    border: groove green 10px;
+    border-radius: 20px;
+    background-color: black;
+    color: #f1f1f1;
+    font-size: 25px;
+    font-weight: bold;
+    margin-top: 10px;
 }
 
 #myBtn:hover,
 #deleteBtn:hover {
-  background-color: green;
+    background-color: green;
 }
 
 #myBtn:active,
 #deleteBtn:active {
-  background-color: #3e8e41;
-  box-shadow: 0 5px #0e390f;
-  transform: translateY(4px);
+    background-color: #3e8e41;
+    box-shadow: 0 5px #0e390f;
+    transform: translateY(4px);
 }
 
-#inputField {
-  padding: 30px 60px;
-  border: groove green 10px;
-  border-radius: 20px;
-  background-color: black;
-  color: #f1f1f1;
-  font-size: 20px;
-}
-
-#tallrekke {
-  word-break: break-all;
-}
-
+#tallrekke,
 #alleTall {
-  word-break: break-all;
+    word-break: break-all;
+    width: 100%;
+    text-align: center;
+}
+
+/* Responsivitet for mindre skjermer */
+@media (max-width: 768px) {
+    .grid-container {
+        grid-template-columns: 1fr; /* En kolonne på mindre skjermer */
+        grid-template-areas:
+            "myArea"
+            "box2"
+            "box3"
+            "box4"
+            "box5"
+            "box6";
+    }
+
+    h1 {
+        font-size: 60px;
+    }
+
+    #inputField {
+        width: 90%; /* Input-feltet blir litt bredere på mindre skjermer */
+        font-size: 18px;
+        padding: 12px 24px;
+    }
+
+    #myBtn,
+    #deleteBtn {
+        font-size: 20px;
+        padding: 8px 16px; /* Litt mindre knapper */
+    }
 }
